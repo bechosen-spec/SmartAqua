@@ -3,7 +3,6 @@ import pickle
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import streamlit.components.v1 as components
 
 # Set the configuration option to disable the warning
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -18,27 +17,9 @@ with open('xgb_model.pkl', 'rb') as f:
 # Define the feature names
 feature_names = ['temperature(C)', 'turbidity (NTU)', 'Dissolved Oxygen (g/ml)', 'PH', 'ammonia(g/ml)', 'nitrate(g/ml)']
 
-# Set aquaculture theme
-st.markdown(
-    """
-    <style>
-    .aquaculture {
-        background-color: #4CB3A2;
-        color: white;
-        padding: 10px;
-        border-radius: 5px;
-        font-weight: bold;
-        font-size: 24px;
-        text-align: center;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # Streamlit app
 st.title("Smart Aqua")
-st.markdown('<p class="aquaculture">App for Fish Length and Weight Prediction</p>', unsafe_allow_html=True)
+st.subheader("App for Fish Length and Weight Prediction")
 
 # User input
 temperature = st.number_input("Temperature (C)")
@@ -58,8 +39,8 @@ if st.button("Get Fish Predictions!"):
     fish_weight_prediction = xgb_model.predict(input_data)
 
     # Display predictions
-    st.write("Fish Length Prediction:", float(fish_length_prediction[0])," cm")
-    st.write("Fish Weight Prediction:", float(fish_weight_prediction[0])," g")
+    st.write("Fish Length Prediction:", fish_length_prediction[0], "cm")
+    st.write("Fish Weight Prediction:", fish_weight_prediction[0], "g")
 
     # Feature importances
     importances_length = pd.Series(decision_tree_model.feature_importances_, index=feature_names).sort_values()
