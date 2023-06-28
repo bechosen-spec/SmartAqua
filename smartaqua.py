@@ -58,8 +58,8 @@ if st.button("Get Fish Predictions!"):
     fish_weight_prediction = xgb_model.predict(input_data)
 
     # Display predictions
-    st.write("Fish Length Prediction:", fish_length_prediction[0]," cm")
-    st.write("Fish Weight Prediction:", fish_weight_prediction[0]," g")
+    st.write("Fish Length Prediction:", float(fish_length_prediction[0])," cm")
+    st.write("Fish Weight Prediction:", float(fish_weight_prediction[0])," g")
 
     # Feature importances
     importances_length = pd.Series(decision_tree_model.feature_importances_, index=feature_names).sort_values()
