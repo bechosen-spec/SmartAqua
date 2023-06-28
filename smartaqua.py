@@ -9,10 +9,10 @@ import streamlit.components.v1 as components
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Load the trained models
-with open('/home/boniface/Desktop/Projects/SmartAqua/decision_tree_model.pkl', 'rb') as f:
+with open('decision_tree_model.pkl', 'rb') as f:
     decision_tree_model = pickle.load(f)
 
-with open('/home/boniface/Desktop/Projects/SmartAqua/xgb_model.pkl', 'rb') as f:
+with open('xgb_model.pkl', 'rb') as f:
     xgb_model = pickle.load(f)
 
 # Define the feature names
