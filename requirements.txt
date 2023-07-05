@@ -1,5 +1,5 @@
 streamlit
-pickle5
+joblib
 pandas
 matplotlib
 seaborn
