@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -8,11 +8,8 @@ import seaborn as sns
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Load the trained models
-with open('decision_tree_model.pkl', 'rb') as f:
-    decision_tree_model = pickle.load(f)
-
-with open('xgb_model.pkl', 'rb') as f:
-    xgb_model = pickle.load(f)
+decision_tree_model = joblib.load('decision_tree_model.pkl')
+xgb_model = joblib.load('xgb_model.pkl')
 
 # Define the feature names
 feature_names = ['temperature(C)', 'turbidity (NTU)', 'Dissolved Oxygen (g/ml)', 'PH', 'ammonia(g/ml)', 'nitrate(g/ml)']
